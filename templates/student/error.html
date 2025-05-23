@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            background-color: #fdf2f2;
+            font-family: Arial, sans-serif;
+            color: #d32f2f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .error-box {
+            border: 1px solid #d32f2f;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #fff0f0;
+            box-shadow: 0px 0px 10px #e0b4b4;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+        }
+        a {
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: #d32f2f;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-box">
+    <h1>Oops! Something went wrong.</h1>
+    <p>{{ error }}</p>
+    <a href="/userportal/login">Go back home</a>
+</div>
+
+</body>
+</html>

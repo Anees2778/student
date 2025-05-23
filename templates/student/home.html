@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a,button, .add-button {
+            padding: 6px 12px;
+            margin: 2px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-button, .update-btn {
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+        }
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .add-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Students</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Score</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Weight</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.firstName }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.testScore }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.get_address_display }}</td>
+            <td>{{ student.weight }}</td>
+            <td>
+                <form action="/{{ student.id }}/" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    
+                    <a class="update-btn" href="/update/{{student.id}}/">Update</a>
+                    <button class="delete-btn" type="submit" name="delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a class="add-button" href="/create/">Add Student</a>
+
+</body>
+</html>
